@@ -8,27 +8,27 @@ This is not for benchmarking your HTTP servers.  Use [ab](http://httpd.apache.or
 
 Write your script like this:
 
-  exports.compare = {
-    "function wrapper" : function () {
-      var x = (function (a) {
-        return a;
-      })("foo");
-    },
-    "with(){} wrapper" : function () {
-      var x;
-      with ({a : "foo"}) {
-        x = a;
+    exports.compare = {
+      "function wrapper" : function () {
+        var x = (function (a) {
+          return a;
+        })("foo");
+      },
+      "with(){} wrapper" : function () {
+        var x;
+        with ({a : "foo"}) {
+          x = a;
+        }
       }
-    }
-    "no wrapper" : function () {
-      var a = "foo";
-      var x = a;
-    }
-  };
+      "no wrapper" : function () {
+        var a = "foo";
+        var x = a;
+      }
+    };
 
 Then, you can either give it a shebang pointing at `node-bench`, or run node-bench against it.
 
-  $ node-bench my-test-script.js
+    $ node-bench my-test-script.js
 
 It'll output the scores in processes/second, so a higher score is always better.
 
