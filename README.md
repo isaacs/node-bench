@@ -4,6 +4,16 @@ A little utility for doing side-by-side benchmarks in [nodejs](http://nodejs.org
 
 This is not for benchmarking your HTTP servers.  Use [ab](http://httpd.apache.org/docs/2.0/programs/ab.html) for that.
 
+## Installation
+
+    $ ./configure && make && sudo make install
+
+This will create a `/usr/local/bin/node-bench` that you can throw your scripts into.
+
+To uninstall, just come back here, and do:
+
+    $ sudo make uninstall
+
 ## Usage
 
 Write your script like this:
