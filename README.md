@@ -54,6 +54,18 @@ Export the following fields from your benchmark script.
 
 `time` - How long (in ms) to run the tests for.  A higher value will result in more accurate tests that take longer to run.  Default: `1000`
 
-`count` - How many function calls to do per iteration.  This should be some fairly big number, but if you have operations that take pretty long, you might want to reduce it.  Default: `1000`
-
 `compareCount` - How many times to do the test runs.  This should be some fairly small number.  Tests are run multiple times in varying order to average out the variation due to calling one function first, a primed cache, garbage collection, etc.  Higher value = more accurate, slower tests.  Default: `8`
+
+`countPerLap` - Especially when doing asynchronous benchmarking, you may want to structure your functions so that they run a bunch of times before continuing.  In these cases, to make your scores reflect the actual number of processes per second, indicate the number of runs per call in the "countPerLap" field.  Default: `1`
+
+## Asynchronous Benchmarking
+
+Your test functions should return either a promise or `undefined`.  If they return `undefined`, then they'll be run 1000 times before checking the timer.  (This is to average out the vagaries of the garbage collector and other machine entropy.)
+
+If your test function returns a promise, then the next iteration won't occur until it calls `emitSuccess`.
+
+Note that creating and returning a promise involves extra overhead.  So, if you're trying to compare something where the overall time per iteration is around the same as the time to create a promise, then this will lead to useless or misleading results.  To get around this problem, run your function many times before emitting success on the promise.  As an example, check out `examples/nexttick-vs-settimeout.js`.
+
+# <span style="background:red; color:white">WARNING!</span>
+
+Statistics are powerful tools, and in the wrong hands, can lead to a lot of mayhem.  Please use this tool for good, and not evil.
