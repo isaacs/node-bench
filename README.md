@@ -58,6 +58,8 @@ Export the following fields from your benchmark script.
 
 `countPerLap` - Especially when doing asynchronous benchmarking, you may want to structure your functions so that they run a bunch of times before continuing.  In these cases, to make your scores reflect the actual number of processes per second, indicate the number of runs per call in the "countPerLap" field.  Default: `1`
 
+`done` - A function that will be called with the results of the runs when they're complete.  By default, this calls a function that will analyze the results a bit and write the data to `stdout`.
+
 ## Asynchronous Benchmarking
 
 Your test functions should return either a promise or `undefined`.  If they return `undefined`, then they'll be run 1000 times before checking the timer.  (This is to average out the vagaries of the garbage collector and other machine entropy.)
