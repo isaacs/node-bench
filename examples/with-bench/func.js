@@ -3,6 +3,10 @@ var outside = "outside";
 // with ({foo:"bar"}) {
   exports.test = function testWith () {
     (function (wrapperArg) {
+      // set a global
+      bar = process.version;
+      // set the local
+      foo = process.ARGV;
       // read the local
       var f = foo;
       // read the wrapper arg.
