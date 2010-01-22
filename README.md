@@ -68,6 +68,16 @@ If your test function returns a promise, then the next iteration won't occur unt
 
 Note that creating and returning a promise involves extra overhead.  So, if you're trying to compare something where the overall time per iteration is around the same as the time to create a promise, then this will lead to useless or misleading results.  To get around this problem, run your function many times before emitting success on the promise.  As an example, check out `examples/nexttick-vs-settimeout.js`.
 
+## Asynchronous Benchmarking without Promises
+
+If you prefer callbacks to promises, that's fine.  Just write your functions so that they take a single argument.  That argument is your callback.  Have fun with it.
+
+Your callback will be fired using `process.nextTick`.  This has a wee bit of overhead, so if you're testing something really fast, you should probably construct it to run many times before calling the callback.  Check the `examples/callback-style.js` test for an example.
+
+## Using node-bench programmatically
+
+Put the `lib/bench.js` file in your `$NODE_PATH` somewhere, and then do `require("bench")` to access its goodies.  (Or put it somewhere else, and require it from there.)
+
 # <span style="background:red; color:white">WARNING!</span>
 
 Statistics are powerful tools, and in the wrong hands, can lead to a lot of mayhem.  Please use this tool for good, and not evil.
