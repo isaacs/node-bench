@@ -1,4 +1,4 @@
-#!/usr/bin/env node node-bench
+#!/usr/bin/env node-bench
 
 function fn () {
   return o

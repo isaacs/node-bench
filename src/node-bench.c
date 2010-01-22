@@ -3,7 +3,9 @@
 int main (int argc, char** argv) {
   return execl(
     NODE_BIN,
+    "node",
     NODE_BENCH,
-    argv[0]
+    argv[argc - 1],
+    (char *)NULL
   );
 }
