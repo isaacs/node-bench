@@ -7,15 +7,15 @@ function fn () {
 var o = {"foo":1};
 
 function fnCall () {
-  return fn.call(o,1,2,3);
+  fn.call(o,1,2,3);
 };
 
 function fnApply () {
-  return fn.apply(o,[1,2,3]);
+  fn.apply(o,[1,2,3]);
 };
 
 function fnDirect () {
-  return fn(o,1,2,3);
+  fn(o,1,2,3);
 };
 
 exports.compare = {
