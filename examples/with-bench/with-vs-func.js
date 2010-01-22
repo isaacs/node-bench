@@ -1,7 +1,7 @@
-#!/usr/bin/env node ../node-bench
+#!/usr/local/bin/node-bench
 
 exports.compare = {
-  "with(){}" : require("./func").test,
-  "function(){}" : require("./with").test
+  "with(){}" : require("./with").test,
+  "function(){}" : require("./func").test
 };
 
