@@ -6,7 +6,7 @@ with ({foo:"bar"}) {
       // set a global
       bar = process.version;
       // set the local
-      foo = process.ARGV;
+      foo = process.argv;
       // read the local
       var f = foo;
       // read the wrapper arg.
