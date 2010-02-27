@@ -62,17 +62,9 @@ Export the following fields from your benchmark script.
 
 ## Asynchronous Benchmarking
 
-Your test functions should return either a promise or `undefined`.  If they return `undefined`, then they'll be run 1000 times before checking the timer.  (This is to average out the vagaries of the garbage collector and other machine entropy.)
+Just write your functions so that they take a single argument.  That argument is your callback.  Have fun with it.
 
-If your test function returns a promise, then the next iteration won't occur until it calls `emitSuccess`.
-
-Note that creating and returning a promise involves extra overhead.  So, if you're trying to compare something where the overall time per iteration is around the same as the time to create a promise, then this will lead to useless or misleading results.  To get around this problem, run your function many times before emitting success on the promise.  As an example, check out `examples/nexttick-vs-settimeout.js`.
-
-## Asynchronous Benchmarking without Promises
-
-If you prefer callbacks to promises, that's fine.  Just write your functions so that they take a single argument.  That argument is your callback.  Have fun with it.
-
-Your callback will be fired using `process.nextTick`.  This has a wee bit of overhead, so if you're testing something really fast, you should probably construct it to run many times before calling the callback.  Check the `examples/callback-style.js` test for an example.
+Your callback will be fired using `process.nextTick`.  This has a wee bit of overhead, so if you're testing something really fast, you should probably construct it to run many times before calling the callback.  Check the `examples/nexttick-vs-settimeout.js` test for an example.
 
 ## Using node-bench programmatically
 
