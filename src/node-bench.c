@@ -1,11 +1,12 @@
-#define NODE_BENCH "/usr/local/lib/node-bench/cli-wrapper.js"
 #include <unistd.h>
+#include <assert.h>
 int main (int argc, char** argv) {
-  return execl(
-    NODE_BIN,
+  assert(argc > 1);
+  return execlp(
+    "node",
     "node",
     NODE_BENCH,
     argv[argc - 1],
-    (char *)NULL
+    (char *)0
   );
 }

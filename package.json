@@ -1,7 +1,11 @@
-{
-  name : "bench",
-  description : "A little utility for doing side-by-side benchmarks in nodejs",
-  author : "Isaac Z. Schlueter <i@izs.me>",
-  make : "./configure && make && sudo make install",
-  main : "lib/bench"
+{ "name" : "bench"
+, "version" : "0.0.2"
+, "description" : "A little utility for doing side-by-side benchmarks in nodejs"
+, "author" : "Isaac Z. Schlueter <i@izs.me>"
+, "bin" : { "node-bench" : "./build/node-bench" }
+, "scripts" :
+  { "preinstall" : "make node-bench"
+  , "uninstall" : "make clean"
+  }
+, "main" : "lib/bench"
 }
