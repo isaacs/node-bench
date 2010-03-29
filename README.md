@@ -6,7 +6,7 @@ This is not for benchmarking your HTTP servers.  Use [ab](http://httpd.apache.or
 
 ## Installation
 
-    $ ./configure && make && sudo make install
+    $ make && sudo make install
 
 This will create a `/usr/local/bin/node-bench` that you can throw your scripts into.
 
