@@ -1,5 +1,5 @@
 { "name" : "bench"
-, "version" : "0.1.0"
+, "version" : "0.2.0"
 , "description" : "A little utility for doing side-by-side benchmarks in nodejs"
 , "author" : "Isaac Z. Schlueter <i@izs.me>"
 , "bin" : { "node-bench" : "./lib/cli-wrapper.js" }
