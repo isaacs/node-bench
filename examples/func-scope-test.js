@@ -1,4 +1,4 @@
-#!/usr/bin/env node-bench
+#!/usr/bin/env node
 
 function fn (a,b,c) { return [a,b,c] };
 
@@ -27,3 +27,5 @@ exports.compare =
   , "fn.call()" : fnCall
   , "method()" : method
   };
+
+require("bench").runMain()
