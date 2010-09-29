@@ -1,4 +1,4 @@
-#!/usr/bin/env node-bench
+#!/usr/bin/env node
 
 var p = [], l = [], c = [], f = [],
   pi = 0, li = 0, ci = 0, fi = 0,
@@ -41,6 +41,7 @@ exports.compare = {
   }
 }
 
+require("bench").runMain()
 
 /**
 benchmarking /Users/isaacs/Documents/src/js/node-bench/examples/push-vs-length
