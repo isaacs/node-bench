@@ -18,54 +18,64 @@ exports.compare =
         j ++
       }
     }
-  , "arr.forEach" : function () {
+  , "arr.forEach arity=1" : function () {
       j = 0
-      arr.forEach(function (i) { j ++ })
+      arr.forEach(function (_) { j ++ })
+    }
+  , "arr.forEach arity=3" : function () {
+      j = 0
+      arr.forEach(function (_,__,___) { j ++ })
     }
   }
 require("bench").runMain()
 
 /*
-[09:13:03] $ node array-iteration.js 
-benchmarking /Users/isaacs/Dropbox/dev/js/node-bench/examples/array-iteration.js
-Please be patient.
 Scores: (bigger is better)
 
 i < l
 Raw:
- > 278293.13543599256
- > 276497.69585253455
- > 278293.13543599256
- > 278293.13543599256
- > 278293.13543599256
-Average (mean) 277934.04751930095
+ > 251889.16876574306
+ > 251046.0251046025
+ > 251466.8901927913
+ > 251677.8523489933
+ > 234558.24863174354
+Average (mean) 248127.63700877473
 
 i < arr.length
 Raw:
- > 198807.15705765408
- > 212916.96238466998
- > 214132.76231263383
- > 214132.76231263383
- > 213523.13167259787
-Average (mean) 210702.5551480379
+ > 193423.59767891682
+ > 186219.739292365
+ > 193610.8422071636
+ > 193610.8422071636
+ > 174367.91630340018
+Average (mean) 188246.58753780182
 
-arr.forEach
+arr.forEach arity=3
 Raw:
- > 38759.68992248062
- > 38358.26620636747
- > 38580.246913580246
- > 38880.24883359254
- > 38940.80996884735
-Average (mean) 38703.85236897365
+ > 43591.979075850046
+ > 43516.10095735422
+ > 43402.77777777778
+ > 43554.006968641115
+ > 42936.88278231001
+Average (mean) 43400.34951238664
+
+arr.forEach arity=1
+Raw:
+ > 35112.3595505618
+ > 35236.08174770966
+ > 35149.3848857645
+ > 35211.2676056338
+ > 33590.86328518643
+Average (mean) 34859.991414971235
 
 Winner: i < l
 Compared with next highest (i < arr.length), it's:
-24.19% faster
+24.13% faster
 1.32 times as fast
 0.12 order(s) of magnitude faster
 
-Compared with the slowest (arr.forEach), it's:
-86.07% faster
-7.18 times as fast
-0.86 order(s) of magnitude faster
+Compared with the slowest (arr.forEach arity=1), it's:
+85.95% faster
+7.12 times as fast
+0.85 order(s) of magnitude faster
 */
