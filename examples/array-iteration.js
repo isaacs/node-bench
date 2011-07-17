@@ -27,7 +27,7 @@ exports.compare =
       arr.forEach(function (_,__,___) { j ++ })
     }
   }
-require("bench").runMain()
+require("../").runMain()
 
 /*
 Scores: (bigger is better)

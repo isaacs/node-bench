@@ -31,4 +31,4 @@ exports.compare =
   , "uncached" : utc
   }
 
-require("bench").runMain()
+require("../").runMain()

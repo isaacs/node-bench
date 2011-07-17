@@ -41,7 +41,7 @@ exports.compare = {
   }
 }
 
-require("bench").runMain()
+require("../").runMain()
 
 /**
 benchmarking /Users/isaacs/Documents/src/js/node-bench/examples/push-vs-length

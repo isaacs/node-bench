@@ -28,4 +28,4 @@ exports.compare =
   , "method()" : method
   };
 
-require("bench").runMain()
+require("../").runMain()

@@ -20,7 +20,7 @@ exports.compare =
   , "unbound" : fn
   }
 
-require("bench").runMain()
+require("../").runMain()
 
 // [20:58:33] $ node examples/bind.js 
 // benchmarking /Users/isaacs/Documents/src/js/node-bench/examples/bind.js
