@@ -70,7 +70,7 @@ tests.  Default: `8`
 `countPerLap` - Especially when doing asynchronous benchmarking, you may
 want to structure your functions so that they run a bunch of times before
 continuing.  In these cases, to make your scores reflect the actual number
-of processes per second, indicate the number of runs per call in the
+of processes per ms, indicate the number of runs per call in the
 "countPerLap" field.  Default: `1`
 
 `done` - A function that will be called with the results of the runs
