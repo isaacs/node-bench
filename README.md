@@ -6,13 +6,7 @@ This is not for benchmarking your HTTP servers.  Use [ab](http://httpd.apache.or
 
 ## Installation
 
-    $ make && sudo make install
-
-This will create a `/usr/local/bin/node-bench` that you can throw your scripts into.
-
-To uninstall, just come back here, and do:
-
-    $ sudo make uninstall
+    npm install bench
 
 ## Usage
 
@@ -35,12 +29,13 @@ Write your script like this:
         var x = a;
       }
     };
+    require("bench").runMain()
 
-Then, you can either give it a shebang pointing at `node-bench`, or run node-bench against it.
+Then, start it up with node.
 
-    $ node-bench my-test-script.js
+    $ node my-test-script.js
 
-It'll output the scores in processes/second, so a higher score is always better.
+It'll output the scores in processes/ms, so a higher score is always better.  That is, the values are kHz, not Hz.
 
 You can also export `time`, `count`, and `comparecount` to change the behavior slightly.
 
