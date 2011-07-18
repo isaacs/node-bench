@@ -1,35 +1,25 @@
 // testing converting arguments to an Array
 
 function manualMap () {
-  var arr = []
-  for (var i = 0, l = arguments.length; i < l; i ++) {
-    if (arguments.hasOwnProperty(i)) arr[i] = arguments[i]
-  }
+  var l = arguments.length
+  var arr = new Array(l)
+  for (var i = 0; i < l; i ++) arr[i] = arguments[i]
   return arr
 }
 
 function manualMapArg (x) {
-  var arr = []
-  for (var i = 0, l = arguments.length; i < l; i ++) {
-    if (arguments.hasOwnProperty(i)) arr[i] = arguments[i]
-  }
+  var l = arguments.length
+  var arr = new Array(l)
+  for (var i = 0; i < l; i ++) arr[i] = arguments[i]
   return arr
 }
 
 function arrayApply () {
-  return Array.apply(arguments)
+  return arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments)
 }
 
 function arrayApplyArg (x) {
-  return Array.apply(arguments)
-}
-
-function arrayCall () {
-  return Array.call(arguments)
-}
-
-function arrayCallArg (x) {
-  return Array.call(arguments)
+  return arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments)
 }
 
 function sliceCall () {
@@ -66,53 +56,49 @@ function sliceZeroApplyArg (x) {
 
 exports.compare =
   { manualMap: function () {
-      return manualMap(Math.random())
+      return [ manualMap(Math.random()), manualMap(Math.random(), Math.random()) ]
     }
-  , manualMapArg: function() {
-      return manualMapArg(Math.random())
+  , manualMapArg: function () {
+      return [ manualMapArg(Math.random()), manualMapArg(Math.random(), Math.random()) ]
     }
-  , arrayApply: function() {
-      return arrayApply(Math.random())
+  , arrayApply: function () {
+      return [ arrayApply(Math.random()), arrayApply(Math.random(), Math.random()) ]
     }
-  , arrayApplyArg: function() {
-      return arrayApplyArg(Math.random())
+  , arrayApplyArg: function () {
+      return [ arrayApplyArg(Math.random()), arrayApplyArg(Math.random(), Math.random()) ]
     }
-  , arrayCall: function() {
-      return arrayCall(Math.random())
+  , sliceCall: function () {
+      return [ sliceCall(Math.random()), sliceCall(Math.random(), Math.random()) ]
     }
-  , arrayCallArg: function() {
-      return arrayCallArg(Math.random())
+  , sliceCallArg: function () {
+      return [ sliceCallArg(Math.random()), sliceCallArg(Math.random(), Math.random()) ]
     }
-  , sliceCall: function() {
-      return sliceCall(Math.random())
+  , sliceZeroCall: function () {
+      return [ sliceZeroCall(Math.random()), sliceZeroCall(Math.random(), Math.random()) ]
     }
-  , sliceCallArg: function() {
-      return sliceCallArg(Math.random())
+  , sliceZeroCallArg: function () {
+      return [ sliceZeroCallArg(Math.random()), sliceZeroCallArg(Math.random(), Math.random()) ]
     }
-  , sliceZeroCall: function() {
-      return sliceZeroCall(Math.random())
+  , sliceApply: function () {
+      return [ sliceApply(Math.random()), sliceApply(Math.random(), Math.random()) ]
     }
-  , sliceZeroCallArg: function() {
-      return sliceZeroCallArg(Math.random())
+  , sliceApplyArg: function () {
+      return [ sliceApplyArg(Math.random()), sliceApplyArg(Math.random(), Math.random()) ]
     }
-  , sliceApply: function() {
-      return sliceApply(Math.random())
+  , sliceZeroApply: function () {
+      return [ sliceZeroApply(Math.random()), sliceZeroApply(Math.random(), Math.random()) ]
     }
-  , sliceApplyArg: function() {
-      return sliceApplyArg(Math.random())
-    }
-  , sliceZeroApply: function() {
-      return sliceZeroApply(Math.random())
-    }
-  , sliceZeroApplyArg: function() {
-      return sliceZeroApplyArg(Math.random())
+  , sliceZeroApplyArg: function () {
+      return [ sliceZeroApplyArg(Math.random()), sliceZeroApplyArg(Math.random(), Math.random()) ]
     }
   }
+
+exports.countPerLap = 2
 
 require("../").runMain()
 
 /*
-$ node examples/array-ify.js
+
 benchmarking /Users/isaacs/dev-src/js/node-bench/examples/array-ify.js
 Please be patient.
 { node: '0.5.2-pre',
@@ -122,141 +108,123 @@ Please be patient.
   openssl: '0.9.8l' }
 Scores: (bigger is better)
 
-arrayCall
-Raw:
- > 5387.6123876123875
- > 4906.093906093906
- > 4772.227772227772
- > 2906.0939060939063
- > 3707.2927072927073
-Average (mean) 4335.864135864136
-
 arrayApply
 Raw:
- > 4458.541458541458
- > 4525.474525474526
- > 3622.377622377622
- > 2825.615763546798
- > 4403.596403596403
-Average (mean) 3967.121154707361
-
-sliceCall
-Raw:
- > 3061.9380619380618
- > 3413.5864135864135
- > 3179.82017982018
- > 3669.3306693306695
- > 3676.3236763236764
-Average (mean) 3400.1998001998
-
-sliceZeroCall
-Raw:
- > 3418.581418581419
- > 3557.4425574425572
- > 3567.4325674325673
- > 2532.4675324675327
- > 2079.92007992008
-Average (mean) 3031.1688311688317
-
-sliceApply
-Raw:
- > 3025.974025974026
- > 2964.035964035964
- > 3133.866133866134
- > 2106.6799601196412
- > 2940.05994005994
-Average (mean) 2834.1232048111415
-
-sliceZeroApply
-Raw:
- > 2593.4065934065934
- > 2741.774675972084
- > 2733.2667332667334
- > 2108.891108891109
- > 2559.5238095238096
-Average (mean) 2547.3725842120657
+ > 11778.221778221778
+ > 12207.792207792209
+ > 12815.184815184815
+ > 10159.84015984016
+ > 12595.404595404596
+Average (mean) 11911.288711288711
 
 manualMap
 Raw:
- > 986.013986013986
- > 898.1018981018981
- > 891.1088911088912
- > 884.1158841158841
- > 770.2297702297702
-Average (mean) 885.9140859140858
-
-arrayCallArg
-Raw:
- > 451.54845154845157
- > 442.89970208540217
- > 419.22695738354804
- > 375.1243781094527
- > 411.5884115884116
-Average (mean) 420.0775801430532
+ > 10637.362637362638
+ > 10522.432701894317
+ > 11186.813186813188
+ > 9558.441558441558
+ > 11064.935064935065
+Average (mean) 10593.997029889355
 
 arrayApplyArg
 Raw:
- > 369.2614770459082
- > 442.11576846307383
- > 423.1536926147705
- > 386.839481555334
- > 430.56943056943055
-Average (mean) 410.3879700497035
-
-sliceZeroCallArg
-Raw:
- > 131.0824230387289
- > 127.363184079602
- > 121.63509471585245
- > 113.32007952286283
- > 118.52589641434263
-Average (mean) 122.38533555427776
-
-sliceApplyArg
-Raw:
- > 126.49402390438247
- > 123.87612387612387
- > 118.40796019900498
- > 93.812375249501
- > 112.10317460317461
-Average (mean) 114.93873156643738
-
-sliceZeroApplyArg
-Raw:
- > 125.62313060817547
- > 122.1449851042701
- > 105.41871921182266
- > 97.70687936191426
- > 119.64107676969093
-Average (mean) 114.1069582111747
-
-sliceCallArg
-Raw:
- > 122.38805970149254
- > 125.3731343283582
- > 120.87912087912088
- > 104.58167330677291
- > 93.53233830845771
-Average (mean) 113.35086530484045
+ > 9370.62937062937
+ > 9648.351648351649
+ > 9518.481518481518
+ > 9866.133866133867
+ > 9996.003996003996
+Average (mean) 9679.92007992008
 
 manualMapArg
 Raw:
- > 128.48605577689244
- > 122.26640159045725
- > 121.63509471585245
- > 82.25966303270565
- > 106.36182902584493
-Average (mean) 112.20180882835055
+ > 9880.11988011988
+ > 9332.667332667334
+ > 9550.44955044955
+ > 9154.845154845154
+ > 10463.536463536464
+Average (mean) 9676.323676323675
 
-Winner: arrayCall
-Compared with next highest (arrayApply), it's:
-8.5% faster
-1.09 times as fast
-0.04 order(s) of magnitude faster
+sliceZeroApply
+Raw:
+ > 2339.6603396603396
+ > 2355.6443556443555
+ > 2337.6623376623374
+ > 2281.7182817182816
+ > 2305.3892215568862
+Average (mean) 2324.01490724844
 
-Compared with the slowest (manualMapArg), it's:
-97.41% faster
-38.64 times as fast
-1.59 order(s) of magnitude faster
+sliceApply
+Raw:
+ > 2115.884115884116
+ > 2185.8141858141857
+ > 2175.8241758241757
+ > 2223.552894211577
+ > 2151.8481518481517
+Average (mean) 2170.584704716441
+
+sliceCall
+Raw:
+ > 2131.868131868132
+ > 2029.97002997003
+ > 1982.017982017982
+ > 2031.968031968032
+ > 2049.95004995005
+Average (mean) 2045.154845154845
+
+sliceZeroCall
+Raw:
+ > 2071.928071928072
+ > 2001.998001998002
+ > 2105.577689243028
+ > 1942.057942057942
+ > 2039.96003996004
+Average (mean) 2032.304349037417
+
+sliceZeroCallArg
+Raw:
+ > 129.4820717131474
+ > 134.65346534653466
+ > 128.8404360753221
+ > 128.7128712871287
+ > 128.8404360753221
+Average (mean) 130.10585609949098
+
+sliceZeroApplyArg
+Raw:
+ > 129.4820717131474
+ > 131.34328358208955
+ > 129.03225806451613
+ > 128.96825396825398
+ > 129.35323383084577
+Average (mean) 129.63582023177054
+
+sliceCallArg
+Raw:
+ > 127.11022840119166
+ > 124.62908011869436
+ > 126.23274161735701
+ > 128.8404360753221
+ > 123.50597609561753
+Average (mean) 126.06369246163653
+
+sliceApplyArg
+Raw:
+ > 128.33168805528135
+ > 121.27236580516899
+ > 122.2879684418146
+ > 120.67260138476756
+ > 120.67260138476756
+Average (mean) 122.64744501436
+
+Winner: arrayApply
+Compared with next highest (manualMap), it's:
+11.06% faster
+1.12 times as fast
+0.05 order(s) of magnitude faster
+
+Compared with the slowest (sliceApplyArg), it's:
+98.97% faster
+97.12 times as fast
+1.99 order(s) of magnitude faster
 
 */
