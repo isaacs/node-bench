@@ -14,6 +14,22 @@ function manualMapArg (x) {
   return arr
 }
 
+function duff () {
+  var l = arguments.length
+  var arr = new Array(l)
+  switch (l) {
+    case 8: arr[7] = arguments[7]
+    case 7: arr[6] = arguments[6]
+    case 6: arr[5] = arguments[5]
+    case 5: arr[4] = arguments[4]
+    case 4: arr[3] = arguments[3]
+    case 3: arr[2] = arguments[2]
+    case 2: arr[1] = arguments[1]
+    case 1: arr[0] = arguments[0]
+  }
+  return arr
+}
+
 function arrayApply () {
   return arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments)
 }
@@ -57,6 +73,9 @@ function sliceZeroApplyArg (x) {
 exports.compare =
   { manualMap: function () {
       return [ manualMap(Math.random()), manualMap(Math.random(), Math.random()) ]
+    }
+  , duff: function () {
+      return [ duff(Math.random()), duff(Math.random(), Math.random()) ]
     }
   , manualMapArg: function () {
       return [ manualMapArg(Math.random()), manualMapArg(Math.random(), Math.random()) ]
