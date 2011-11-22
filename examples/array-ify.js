@@ -70,46 +70,54 @@ function sliceZeroApplyArg (x) {
   return Array.prototype.slice.apply(arguments, [0])
 }
 
+function arrayProto () {
+  arguments.__proto__ = Array.prototype
+  return arguments
+}
+
 exports.compare =
   { manualMap: function () {
       return [ manualMap(Math.random()), manualMap(Math.random(), Math.random()) ]
     }
+  , arrayProto: function () {
+      return [ arrayProto(Math.random()), arrayProto(Math.random(), Math.random()) ]
+    }
   , duff: function () {
       return [ duff(Math.random()), duff(Math.random(), Math.random()) ]
-    }
-  , manualMapArg: function () {
-      return [ manualMapArg(Math.random()), manualMapArg(Math.random(), Math.random()) ]
     }
   , arrayApply: function () {
       return [ arrayApply(Math.random()), arrayApply(Math.random(), Math.random()) ]
     }
-  , arrayApplyArg: function () {
-      return [ arrayApplyArg(Math.random()), arrayApplyArg(Math.random(), Math.random()) ]
-    }
-  , sliceCall: function () {
-      return [ sliceCall(Math.random()), sliceCall(Math.random(), Math.random()) ]
-    }
-  , sliceCallArg: function () {
-      return [ sliceCallArg(Math.random()), sliceCallArg(Math.random(), Math.random()) ]
-    }
-  , sliceZeroCall: function () {
-      return [ sliceZeroCall(Math.random()), sliceZeroCall(Math.random(), Math.random()) ]
-    }
-  , sliceZeroCallArg: function () {
-      return [ sliceZeroCallArg(Math.random()), sliceZeroCallArg(Math.random(), Math.random()) ]
-    }
-  , sliceApply: function () {
-      return [ sliceApply(Math.random()), sliceApply(Math.random(), Math.random()) ]
-    }
-  , sliceApplyArg: function () {
-      return [ sliceApplyArg(Math.random()), sliceApplyArg(Math.random(), Math.random()) ]
-    }
-  , sliceZeroApply: function () {
-      return [ sliceZeroApply(Math.random()), sliceZeroApply(Math.random(), Math.random()) ]
-    }
-  , sliceZeroApplyArg: function () {
-      return [ sliceZeroApplyArg(Math.random()), sliceZeroApplyArg(Math.random(), Math.random()) ]
-    }
+  //, manualMapArg: function () {
+  //    return [ manualMapArg(Math.random()), manualMapArg(Math.random(), Math.random()) ]
+  //  }
+  //, arrayApplyArg: function () {
+  //    return [ arrayApplyArg(Math.random()), arrayApplyArg(Math.random(), Math.random()) ]
+  //  }
+  //, sliceCall: function () {
+  //    return [ sliceCall(Math.random()), sliceCall(Math.random(), Math.random()) ]
+  //  }
+  //, sliceCallArg: function () {
+  //    return [ sliceCallArg(Math.random()), sliceCallArg(Math.random(), Math.random()) ]
+  //  }
+  //, sliceZeroCall: function () {
+  //    return [ sliceZeroCall(Math.random()), sliceZeroCall(Math.random(), Math.random()) ]
+  //  }
+  //, sliceZeroCallArg: function () {
+  //    return [ sliceZeroCallArg(Math.random()), sliceZeroCallArg(Math.random(), Math.random()) ]
+  //  }
+  //, sliceApply: function () {
+  //    return [ sliceApply(Math.random()), sliceApply(Math.random(), Math.random()) ]
+  //  }
+  //, sliceApplyArg: function () {
+  //    return [ sliceApplyArg(Math.random()), sliceApplyArg(Math.random(), Math.random()) ]
+  //  }
+  //, sliceZeroApply: function () {
+  //    return [ sliceZeroApply(Math.random()), sliceZeroApply(Math.random(), Math.random()) ]
+  //  }
+  //, sliceZeroApplyArg: function () {
+  //    return [ sliceZeroApplyArg(Math.random()), sliceZeroApplyArg(Math.random(), Math.random()) ]
+  //  }
   }
 
 exports.countPerLap = 2
