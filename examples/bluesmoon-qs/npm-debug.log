@@ -1,0 +1,38 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/local/bin/npm', 'docs', 'tron' ]
+info using npm@1.1.0-alpha-6
+info using node@v0.6.4
+verbose config file /Users/isaacs/.npmrc
+verbose config file /usr/local/etc/npmrc
+verbose config file /usr/local/lib/node_modules/npm/npmrc
+verbose GET tron/latest
+verbose raw, before any munging tron/latest
+verbose url resolving [ 'https://registry.npmjs.org/', './tron/latest' ]
+verbose url resolved https://registry.npmjs.org/tron/latest
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.1.0 (Erlang OTP/R14B04)',
+silly get cb     etag: '"AOLYJ2P9W493QQXW6MBX69AAT"',
+silly get cb     date: 'Fri, 02 Dec 2011 23:10:55 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '788' } ]
+verbose mkdir (expected) error ENOENT, no such file or directory '/Users/isaacs/.npm/tron/latest'
+verbose mkdir done: /Users/isaacs/.npm/tron/latest 755
+verbose repository { url: '' }
+ERR! TypeError: Object #<Object> has no method 'replace'
+ERR!     at /usr/local/lib/node_modules/npm/lib/docs.js:31:26
+ERR!     at Object.saved [as oncomplete] (/usr/local/lib/node_modules/npm/lib/utils/npm-registry-client/get.js:136:7)
+ERR! Report this *entire* log at:
+ERR!     <http://github.com/isaacs/npm/issues>
+ERR! or email it to:
+ERR!     <npm-@googlegroups.com>
+ERR! 
+ERR! System Darwin 11.2.0
+ERR! command "node" "/usr/local/bin/npm" "docs" "tron"
+ERR! cwd /Users/isaacs/dev/js/node-bench/examples/bluesmoon-qs
+ERR! node -v v0.6.4
+ERR! npm -v 1.1.0-alpha-6
+ERR! type undefined_method
+ERR! arguments [ 'replace', { url: '' } ]
+ERR! message Object #<Object> has no method 'replace'
+verbose exit [ 1, true ]

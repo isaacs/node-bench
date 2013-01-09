@@ -16,6 +16,8 @@ function fnDirect () {
   fn(o,1,2,3);
 }
 
+var fnBind = fn.bind(o, 1, 2, 3)
+
 function method () {
   o.method(1,2,3);
 }
@@ -25,7 +27,8 @@ exports.compare =
   { "fn()" : fnDirect
   , "fn.apply()" : fnApply
   , "fn.call()" : fnCall
-  , "method()" : method
+  , "o.method()" : method
+  , "fn.bind()" : fnBind
   };
 
 require("../").runMain()
