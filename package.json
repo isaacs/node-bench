@@ -1,7 +1,10 @@
-{ "name" : "bench"
-, "version" : "0.3.4"
-, "description" : "A little utility for doing side-by-side benchmarks in nodejs"
-, "author" : "Isaac Z. Schlueter <i@izs.me>"
-, "bin" : { "node-bench" : "./lib/cli-wrapper.js" }
-, "main" : "lib/bench.js"
+{
+  "name": "bench",
+  "version": "0.3.5",
+  "description": "A little utility for doing side-by-side benchmarks in nodejs",
+  "author": "Isaac Z. Schlueter <i@izs.me>",
+  "bin": {
+    "node-bench": "./lib/cli-wrapper.js"
+  },
+  "main": "lib/bench.js"
 }
