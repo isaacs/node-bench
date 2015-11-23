@@ -25,7 +25,7 @@ Write your script like this:
         with ({a : "foo"}) {
           x = a;
         }
-      }
+      },
       "no wrapper" : function () {
         var a = "foo";
         var x = a;
