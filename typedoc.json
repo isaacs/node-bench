@@ -1,8 +1,0 @@
-{
-  "tsconfig": "./.tshy/esm.json",
-  "entryPoints": ["./src/**/*.+(ts|tsx|mts|cts)"],
-  "navigationLinks": {
-    "GitHub": "https://github.com/isaacs/node-bench",
-    "isaacs projects": "https://isaacs.github.io/"
-  }
-}
